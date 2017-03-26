@@ -1,25 +1,14 @@
-PLAY [hostB] ****************************************************************** 
+---
+- hosts: hostB
+  tasks:
+      - name: Create file
+        file: path=/tmp/yallo state=touch
 
-GATHERING FACTS *************************************************************** 
-ok: [hostB]
+- hosts: my_hosts
+  sudo: yes
+  tasks:
+      - name: Create user
+        user: name=mario shell=/bin/zsh
 
-TASK: [Create file] *********************************************************** 
-changed: [hostB]
-
-PLAY [my_hosts] *************************************************************** 
-
-GATHERING FACTS *************************************************************** 
-ok: [hostA]
-ok: [hostB]
-
-TASK: [Create user] *********************************************************** 
-changed: [hostA]
-changed: [hostB]
-
-TASK: [Install zlib] ********************************************************** 
-ok: [hostA]
-ok: [hostB]
-
-PLAY RECAP ******************************************************************** 
-hostA                      : ok=5    changed=2    unreachable=0    failed=0   
-hostB                     : ok=3    changed=1    unreachable=0    failed=0
+      - name: Install zlib
+        yum: name=zlib state=latest
