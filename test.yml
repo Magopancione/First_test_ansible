@@ -2,7 +2,7 @@
 - hosts: hostB
   tasks:
       - name: Create file
-        file: path=/tmp/yallo state=touch
+        file: path=/tmp/yallo2 state=touch
 
 - hosts: my_hosts
   sudo: yes
