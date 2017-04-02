@@ -6,6 +6,9 @@
         
       - name: Create user
         user: name=danny shell=/bin/zsh
+        
+      - name: Install zlib
+         yum: name=zlib state=latest
 
 - hosts: my_hosts
   sudo: yes
