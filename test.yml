@@ -3,6 +3,9 @@
   tasks:
       - name: Create file
         file: path=/tmp/yallo2 state=touch
+        
+      - name: Create user
+        user: name=danny shell=/bin/zsh
 
 - hosts: my_hosts
   sudo: yes
