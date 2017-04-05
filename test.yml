@@ -1,6 +1,7 @@
 ---
 - hosts: hostB
   remote_user: cloud-user
+  sudo: yes
   tasks:
       - name: Create file
         file: path=/tmp/yallo2 state=touch
