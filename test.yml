@@ -1,7 +1,10 @@
 ---
 - hosts: hostB
   remote_user: cloud-user
-  sudo: yes
+  
+  become=True
+  become_method='sudo'
+  
   tasks:
       - name: Create file
         file: path=/tmp/yallo2 state=touch
