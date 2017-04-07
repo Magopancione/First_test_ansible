@@ -46,7 +46,7 @@
         yum: name=tar,xz,unzip,curl,ipset
 
       - name: Replaces a string in a file
-        shell: sed -i "s/SELINUX=enforcing/SELINUX=permissive/g" /etc/selinux/config
+        shell: sed -i s/SELINUX=enforcing/SELINUX=permissive/g /etc/selinux/config
 
 
 
