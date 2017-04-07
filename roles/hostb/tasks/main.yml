@@ -56,13 +56,13 @@
             name: nogroup
             state: present
      
-     - name: Reboot the server for kernel update
-       shell: ( sleep 3 && /sbin/reboot & )
-       async: 0
-       poll: 0 
+      - name: reboot host
+        command: /usr/bin/systemd-run --on-active=10 /usr/bin/systemctl reboot
+        async: 0
+        poll: 0
 
-     - name: Wait for the server to reboot
-       local_action: wait_for host="{{ansible_host}}" delay=15 state=started port="{{ansible_port}}" connect_timeout=10 timeout=180
+      - name: wait for host sshd
+        local_action: wait_for host="{{ inventory_hostname }}" search_regex=OpenSSH port=22 timeout=300 delay=30
 
 #      - name: make a test of docker
 #              command:  docker ps
