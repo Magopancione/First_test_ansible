@@ -23,10 +23,11 @@
 
       - name: enable service httpd and ensure it is not masked
         systemd:
-        name: docker
-        enabled: yes
-        masked: no
-          
+          name: docker
+          enabled: yes
+          masked: no
+
+
 #      - name: make a test of docker
 #              command:  docker ps
 #              register: myoutput
