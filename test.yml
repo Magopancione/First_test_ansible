@@ -3,7 +3,11 @@
   remote_user: cloud-user
   sudo: yes
   gather_facts: no
-  tasks:        
+  tasks:     
+  
+      - name: upgrade all packages
+        yum: name=* state=latest
+        
       - name: Create file
         file: path=/tmp/yallo2 state=touch
         
