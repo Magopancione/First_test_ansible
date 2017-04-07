@@ -6,7 +6,6 @@
   environment:
         http_proxy: http://10.222.192.4:8080
   tasks:     
-  
       - name: upgrade all packages
         yum: name=* state=latest
         
