@@ -4,14 +4,17 @@
   sudo: yes
   gather_facts: no
   tasks:
+  
+      - name: upgrade all packages
+        yum:
+        name: '*'
+        state: latest
+        
       - name: Create file
         file: path=/tmp/yallo2 state=touch
         
-      - name: Create user
-        user: name=danny shell=/bin/zsh
-        
-      - name: Install zlib
-        yum: name=zlib state=latest
+      - name: Install docker-engine-1.13.1
+        yum: name=docker-engine-1.13.1 
 
 - hosts: my_hosts
   sudo: yes
