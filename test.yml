@@ -23,7 +23,7 @@
         file: path=/etc/systemd/system/docker.service.d  state=directory       
           
        - copy: src=install_docker/override.conf
-         dest=/etc/systemd/system/docker.service.d/override.conf
+               dest=/etc/systemd/system/docker.service.d/override.conf
  
      # - name: create a path
       #  command: mkdir -p /etc/systemd/system/docker.service.d
