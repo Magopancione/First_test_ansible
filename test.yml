@@ -3,19 +3,17 @@
   remote_user: cloud-user
   sudo: yes
   gather_facts: no
+  environment:
+        http_proxy: http://10.222.192.4:8080
   tasks:     
   
       - name: upgrade all packages
-        environment:
-        http_proxy: http://10.222.192.4:8080
         yum: name=* state=latest
         
       - name: Create file
         file: path=/tmp/yallo2 state=touch
         
       - name: Install docker-engine-1.13.1
-        environment:
-        http_proxy: http://10.222.192.4:8080
         yum: name=docker-engine-1.13.1 
 
 - hosts: my_hosts
