@@ -1,7 +1,41 @@
-- name: Create DataNode service
+- name: Create DCOS
   become: yes
   template:
-    src: hadoop-data-node.service
-    dest: /lib/systemd/system/hadoop-data-node.service
-  notify:
-    - reload-systemctl
+
+      - name: upgrade all packages
+        yum: name=* state=latest
+        
+        
+      - copy: src=install_docker/overlay.conf
+              dest=/etc/modules-load.d/overlay.conf
+        
+        
+      - copy: src=install_docker/docker.repo
+              dest=/etc/yum.repos.d/docker.repo 
+ #     - name: Create file
+ #       file: path=/tmp/yallo2 state=touch
+      - name: Create directory     
+        file: path=/etc/systemd/system/docker.service.d  state=directory       
+          
+      - copy: src=install_docker/override.conf
+               dest=/etc/systemd/system/docker.service.d/override.conf
+ 
+
+      
+   
+            
+      - name: Install docker-engine-1.13.1
+        yum: name=docker-engine-1.13.1 
+        
+      - name: Make sure a service is running
+        systemd: state=started name=docker
+
+      - name: enable service httpd and ensure it is not masked
+        systemd:
+          name: docker
+          enabled: yes
+          masked: no
+          
+      - name: make a test of docker
+        command:  docker ps
+        register: myoutput    
