@@ -55,12 +55,14 @@
       - group:
             name: nogroup
             state: present
+     
+     - name: Reboot the server for kernel update
+       shell: ( sleep 3 && /sbin/reboot & )
+       async: 0
+       poll: 0 
 
-      - name: Reboot the server for kernel update
-        shell: ( sleep 3 && /sbin/reboot & )
-        async: 0
-        poll: 0 
-
+     - name: Wait for the server to reboot
+       local_action: wait_for host="{{ansible_host}}" delay=15 state=started port="{{ansible_port}}" connect_timeout=10 timeout=180
 
 #      - name: make a test of docker
 #              command:  docker ps
