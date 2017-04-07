@@ -41,7 +41,7 @@
         systemd:
           name: docker
           enabled: yes
-          asked: no
+          masked: no
           
 - hosts: my_hosts
   sudo: yes
