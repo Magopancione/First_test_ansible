@@ -17,10 +17,13 @@
               dest=/etc/yum.repos.d/docker.repo 
               
               
-      - name: create a path
-        command: mkdir -p /etc/systemd/system/docker.service.d
-        register: mymotd             
-              
+     # - name: create a path
+      #  command: mkdir -p /etc/systemd/system/docker.service.d
+      #  register: mymotd             
+      
+      - file:
+        path: /etc/systemd/system/docker.service.d
+        state: directory             
             
       - name: Install docker-engine-1.13.1
         yum: name=docker-engine-1.13.1 
