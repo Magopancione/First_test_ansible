@@ -1,10 +1,5 @@
-- name: Create DCOS
-  become: yes
-  template:
-
       - name: upgrade all packages
         yum: name=* state=latest
-        
         
       - copy: src=install_docker/overlay.conf
               dest=/etc/modules-load.d/overlay.conf
@@ -19,11 +14,7 @@
           
       - copy: src=install_docker/override.conf
                dest=/etc/systemd/system/docker.service.d/override.conf
- 
 
-      
-   
-            
       - name: Install docker-engine-1.13.1
         yum: name=docker-engine-1.13.1 
         
