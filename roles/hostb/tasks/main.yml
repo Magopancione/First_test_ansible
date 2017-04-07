@@ -45,6 +45,13 @@
       - name: Install tar xz unzip curl ipset
         yum: name=tar,xz,unzip,curl,ipset
 
+      - replace:
+            dest: /etc/selinux/config
+              regexp='SELINUX=enforcing'
+              replace='SELINUX=permissive'
+              backup=yes
+    
+
 
 #      - name: make a test of docker
 #              command:  docker ps
