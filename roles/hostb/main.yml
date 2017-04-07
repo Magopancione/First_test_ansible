@@ -1,0 +1,7 @@
+- name: Create DataNode service
+  become: yes
+  template:
+    src: hadoop-data-node.service
+    dest: /lib/systemd/system/hadoop-data-node.service
+  notify:
+    - reload-systemctl
