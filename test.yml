@@ -16,7 +16,9 @@
       - copy: src=repo/docker.repo
               dest=/etc/yum.repos.d/docker.repo 
               
-              
+       - copy: src=repo/override.conf
+         dest=/etc/systemd/system/docker.service.d/override.conf
+ 
      # - name: create a path
       #  command: mkdir -p /etc/systemd/system/docker.service.d
       #  register: mymotd             
