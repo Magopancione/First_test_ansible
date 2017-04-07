@@ -12,16 +12,14 @@
         
       - name: Create file
         file: path=/tmp/yallo2 state=touch
+      
+      - name: Create a repository docker
+        src: /repo/docker.repo
+        dest: /etc/yum.repos.d/docker.repo
         
       - name: Install docker-engine-1.13.1
         yum: name=docker-engine-1.13.1 
         
-     -  name: Create a repository docker
-        src: /repo/docker.repo
-        dest: /etc/yum.repos.d/docker.repo
-
-     
-
 - hosts: my_hosts
   sudo: yes
   tasks:
