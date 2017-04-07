@@ -21,7 +21,7 @@
       #  command: mkdir -p /etc/systemd/system/docker.service.d
       #  register: mymotd             
       
-      - name: Create file      
+      - name: Create directory     
         file: path=/etc/systemd/system/docker.service.d  state=directory          
             
       - name: Install docker-engine-1.13.1
