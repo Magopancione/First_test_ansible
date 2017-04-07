@@ -45,11 +45,16 @@
       - name: Install tar xz unzip curl ipset
         yum: name=tar,xz,unzip,curl,ipset
 
-      - name: Replaces a string in a file
-        shell: "sed -i s/SELINUX=enforcing/SELINUX=permissive/g /etc/selinux/config"
+      - replace:
+          path: /etc/selinux/config
+          regexp: '(\s+)SELINUX=enforcing(\s+.*)?$'
+          replace: '\1SELINUX=permissive\2'
+          backup: yes
 
-      - name: Reboot server
-        command: /sbin/reboot
+#      - name: Reboot the server for kernel update
+#        shell: ( sleep 3 && /sbin/reboot & )
+#        async: 0
+#        poll: 0 
 
 
 #      - name: make a test of docker
