@@ -16,10 +16,10 @@
               dest=/etc/systemd/system/docker.service.d/override.conf
 
       - name: Install docker-engine-1.13.1
-              yum: name=docker-engine-1.13.1 
+        yum: name=docker-engine-1.13.1 
         
       - name: Make sure a service is running
-              systemd: state=started name=docker
+        systemd: state=started name=docker
 
       - name: enable service httpd and ensure it is not masked
               systemd:
