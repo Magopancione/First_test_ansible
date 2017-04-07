@@ -1,0 +1,6 @@
+- hosts: hostB
+  roles:
+    - hostB-node
+  tags:
+    - hostB
+    - hostB-node
