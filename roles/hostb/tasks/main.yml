@@ -36,6 +36,13 @@
           enabled: no
           masked: no
 
+      - name: Install chrony
+        yum: name=chrony
+
+      - copy: src=install_docker/chrony.conf
+              dest=/etc/chrony.conf
+
+
 #      - name: make a test of docker
 #              command:  docker ps
 #              register: myoutput
