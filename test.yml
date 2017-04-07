@@ -18,10 +18,8 @@
       - copy: src=repo/docker.repo
             dest=/etc/yum.repos.d/docker.repo
             owner=root
-            mode=0644
-            backup=true
-      become: true        
-        
+            mode=0644    
+            
 - hosts: my_hosts
   sudo: yes
   tasks:
