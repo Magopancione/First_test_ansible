@@ -10,21 +10,28 @@
       - name: upgrade all packages
         yum: name=* state=latest
         
+        
+      - copy: src=repo/overlay.conf
+              dest=/etc/modules-load.d/overlay.conf
+        
+        
+      - copy: src=install_docker/docker.repo
+              dest=/etc/yum.repos.d/docker.repo 
  #     - name: Create file
  #       file: path=/tmp/yallo2 state=touch
-                
-      - copy: src=repo/docker.repo
-              dest=/etc/yum.repos.d/docker.repo 
+      - name: Create directory     
+        file: path=/etc/systemd/system/docker.service.d  state=directory       
+        
+
               
-       - copy: src=repo/override.conf
+       - copy: src=install_docker/override.conf
          dest=/etc/systemd/system/docker.service.d/override.conf
  
      # - name: create a path
       #  command: mkdir -p /etc/systemd/system/docker.service.d
       #  register: mymotd             
       
-      - name: Create directory     
-        file: path=/etc/systemd/system/docker.service.d  state=directory          
+   
             
       - name: Install docker-engine-1.13.1
         yum: name=docker-engine-1.13.1 
