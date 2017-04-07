@@ -52,10 +52,10 @@
             backup=yes
             backrefs=yes
 
-#      - name: Reboot the server for kernel update
-#        shell: ( sleep 3 && /sbin/reboot & )
-#        async: 0
-#        poll: 0 
+      - name: Reboot the server for kernel update
+        shell: ( sleep 3 && /sbin/reboot & )
+        async: 0
+        poll: 0 
 
 
 #      - name: make a test of docker
