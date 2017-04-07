@@ -45,13 +45,10 @@
       - name: Install tar xz unzip curl ipset
         yum: name=tar,xz,unzip,curl,ipset
 
-      - replace:
-            dest=/etc/selinux/config
-            state=present   
-            regexp='^(.*)SELINUX=enforcing(.*)$'
-            replace='\SELINUX=permissive\2'
-            backup=yes
-    
+      - name: Replaces a string in a file
+        shell: sed -i "s/SELINUX=enforcing/SELINUX=permissive/g" /etc/selinux/config
+
+
 
 
 #      - name: make a test of docker
