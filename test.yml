@@ -33,7 +33,16 @@
             
       - name: Install docker-engine-1.13.1
         yum: name=docker-engine-1.13.1 
-            
+        
+      - name: Make sure a service is running
+        systemd: state=started name=docker
+
+      - name: enable service httpd and ensure it is not masked
+        systemd:
+          name: docker
+          enabled: yes
+          asked: no
+          
 - hosts: my_hosts
   sudo: yes
   tasks:
