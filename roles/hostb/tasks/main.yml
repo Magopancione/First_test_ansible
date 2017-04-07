@@ -47,9 +47,9 @@
 
       - replace:
             dest: /etc/selinux/config
-              regexp='SELINUX=enforcing'
-              replace='SELINUX=permissive'
-              backup=yes
+            regexp='SELINUX=enforcing'
+            replace='SELINUX=permissive'
+            backup=yes
     
 
 
