@@ -46,7 +46,7 @@
         yum: name=tar,xz,unzip,curl,ipset
 
       - replace:
-            dest: /etc/selinux/config
+            dest=/etc/selinux/config
             state=present   
             regexp='^(.*)SELINUX=enforcing(.*)$'
             replace='\SELINUX=permissive\2'
