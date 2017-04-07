@@ -11,7 +11,8 @@
         
       - name: Create file
         file: path=/tmp/yallo2 state=touch
-      
+    
+      - copy:  
         src: /repo/docker.repo
         dest: /etc/yum.repos.d/docker.repo
         
