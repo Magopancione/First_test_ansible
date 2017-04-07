@@ -25,9 +25,7 @@
       - copy: src=install_docker/override.conf
                dest=/etc/systemd/system/docker.service.d/override.conf
  
-     # - name: create a path
-      #  command: mkdir -p /etc/systemd/system/docker.service.d
-      #  register: mymotd             
+
       
    
             
@@ -43,11 +41,6 @@
           enabled: yes
           masked: no
           
-- hosts: my_hosts
-  sudo: yes
-  tasks:
-      - name: Create user
-        user: name=mario shell=/bin/zsh
-
-      - name: Install zlib
-        yum: name=zlib state=latest
+      - name: make a test of docker
+        command:  docker ps
+        register: myoutput                    
