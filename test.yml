@@ -1,6 +1,6 @@
 ---
 - hosts: hostB
-  remote_user: cloud-user
+  remote_user:  centos
   sudo: yes
   gather_facts: no
   environment:
