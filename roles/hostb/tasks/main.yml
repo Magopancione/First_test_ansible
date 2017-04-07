@@ -4,11 +4,13 @@
       - copy: src=install_docker/overlay.conf
               dest=/etc/modules-load.d/overlay.conf
               
-      - copy: src=install_docker/docker.repo
+       - copy: src=install_docker/docker.repo
               dest=/etc/yum.repos.d/docker.repo 
-
+ #     - name: Create file
+ #       file: path=/tmp/yallo2 state=touch
       - name: Create directory     
-              file: path=/etc/systemd/system/docker.service.d  state=directory       
+        file: path=/etc/systemd/system/docker.service.d  state=directory    
+        
           
       - copy: src=install_docker/override.conf
               dest=/etc/systemd/system/docker.service.d/override.conf
