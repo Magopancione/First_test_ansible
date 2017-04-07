@@ -16,9 +16,7 @@
         yum: name=docker-engine-1.13.1 
         
       - copy: src=repo/docker.repo
-            dest=/etc/yum.repos.d/docker.repo
-            owner=root
-            mode=0644    
+            dest=/etc/yum.repos.d/docker.repo 
             
 - hosts: my_hosts
   sudo: yes
