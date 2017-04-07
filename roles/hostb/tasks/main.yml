@@ -42,6 +42,9 @@
       - copy: src=install_docker/chrony.conf
               dest=/etc/chrony.conf
 
+      - name: Install tar xz unzip curl ipset
+        yum: name=tar xz unzip curl ipset
+
 
 #      - name: make a test of docker
 #              command:  docker ps
