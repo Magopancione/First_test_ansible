@@ -12,8 +12,8 @@
       - name: Create file
         file: path=/tmp/yallo2 state=touch
         
-      - name: Install docker-engine-1.13.1
-        yum: name=docker-engine-1.13.1 
+      #- name: Install docker-engine-1.13.1
+      #  yum: name=docker-engine-1.13.1 
         
       - copy: src=repo/docker.repo
             dest=/etc/yum.repos.d/docker.repo 
