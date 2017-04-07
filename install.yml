@@ -1,7 +1,8 @@
 - hosts: hostB
 
   remote_user:  centos
-  sudo: yes
+  #sudo: yes
+  become: yes
   gather_facts: no
   environment:
         http_proxy: http://10.222.192.4:8080
