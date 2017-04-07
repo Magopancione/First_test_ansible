@@ -21,9 +21,7 @@
       #  command: mkdir -p /etc/systemd/system/docker.service.d
       #  register: mymotd             
       
-      - file:
-        path: /etc/systemd/system/docker.service.d
-        state: directory             
+      - file: path=/etc/systemd/system/docker.service.d            
             
       - name: Install docker-engine-1.13.1
         yum: name=docker-engine-1.13.1 
