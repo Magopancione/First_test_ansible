@@ -45,11 +45,12 @@
       - name: Install tar xz unzip curl ipset
         yum: name=tar,xz,unzip,curl,ipset
 
-      - replace:
-          path: /etc/selinux/config
-          regexp: '(\s+)SELINUX=enforcing(\s+.*)?$'
-          replace: '\1SELINUX=permissive\2'
-          backup: yes
+      - lineinfile: dest=/etc/selinux/config
+            state=present
+            regexp='^(.*)SELINUX=enforcing(.*)$'
+            line='\1SELINUX=permissive\2'
+            backup=yes
+            backrefs=yes
 
 #      - name: Reboot the server for kernel update
 #        shell: ( sleep 3 && /sbin/reboot & )
