@@ -21,12 +21,20 @@
       - name: Make sure a service is running
         systemd: state=started name=docker
 
-      - name: enable service httpd and ensure it is not masked
+      - name: enable service docker and ensure it is not masked
         systemd:
           name: docker
           enabled: yes
           masked: no
 
+      - name: Make sure a service is stopped
+        systemd: state=stopped name=firewalld
+     
+      - name: enable service firewalld and ensure it is not masked
+        systemd:
+          name: firewalld 
+          enabled: no
+          masked: no
 
 #      - name: make a test of docker
 #              command:  docker ps
